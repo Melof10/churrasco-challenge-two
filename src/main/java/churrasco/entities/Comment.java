@@ -1,10 +1,13 @@
 package churrasco.entities;
 
+import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Comment {
 	
+	@NotBlank
 	private String body;
 	
 	public Comment(String body) {
