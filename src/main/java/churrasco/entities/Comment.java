@@ -1,20 +1,36 @@
 package churrasco.entities;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name = "comment")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Comment {
 	
-	@Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idComment;
-	
-	@Column(name = "id_tocket")
-	private int idTicket;
-	
-	@Column(name = "body")
 	private String body;
+	
+	public Comment(String body) {
+		super();
+		this.body = body;
+	}
+	
+	public Comment() {
+		
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment {"
+				+ "body=" + body + 
+				"}";
+	}
+	
+	
 	
 }
