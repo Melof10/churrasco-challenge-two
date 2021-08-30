@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3c83162-2ae0-435b-b5cd-4e09f26b679f",
+		"_postman_id": "3561a01a-8152-416c-a769-bc35595db2cd",
 		"name": "CHURRASCO-CHALLENGE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,13 +9,13 @@
 			"name": "Career",
 			"item": [
 				{
-					"name": "Added & Update career",
+					"name": "CREATE career",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Desarrollo de Software modificado\",\n    \"description\": \"Carrera que tiene una duración de tres añ modificadoo\",\n    \"semester\": [\n        {\n            \"name\": \"1er semestre\",\n            \"course\": [\n                { \"name\": \"MATEMÁTICA Y LÓGICA\" },\n                { \"name\": \"SISTEMAS Y ORGANIZACIONES\" },\n                { \"name\": \"ARQUITECTURA DE LAS COMPUTADORAS\" },\n                { \"name\": \"PROGRAMACIÓN I\" },\n                { \"name\": \"INGLÉS\" }\n            ]\n        },\n        {\n            \"name\": \"2do semestre\",\n            \"course\": [\n                { \"name\": \"SISTEMAS OPERATIVOS\" },\n                { \"name\": \"MATEMÁTICA APLICADA\" },\n                { \"name\": \"MODELADO DE SISTEMAS\" },\n                { \"name\": \"PROGRAMACIÓN II\" },\n                { \"name\": \"BASE DE DATOS\" }\n            ]\n        },\n        {\n            \"name\": \"3er semestre\",\n            \"course\": [\n                { \"name\": \"INTERFAZ DE USUARIO\" },\n                { \"name\": \"REDES\" },\n                { \"name\": \"INGENIERÍA DE SOFTWARE\" },\n                { \"name\": \"PROGRAMACIÓN III\" },\n                { \"name\": \"VALIDACIÓN Y VERIFICACIÓN DE PROGRAMAS\" },\n                { \"name\": \"ÉTICA Y DEONTOLOGÍA PROFESIONAL\" }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"Desarrollo de Software\",\n    \"description\": \"Carrera que tiene una duración de tres años\",\n    \"semester\": [\n        {\n            \"name\": \"1er semestre\",\n            \"course\": [\n                { \"name\": \"MATEMÁTICA Y LÓGICA\" },\n                { \"name\": \"SISTEMAS Y ORGANIZACIONES\" },\n                { \"name\": \"ARQUITECTURA DE LAS COMPUTADORAS\" },\n                { \"name\": \"PROGRAMACIÓN I\" },\n                { \"name\": \"INGLÉS\" }\n            ]\n        },\n        {\n            \"name\": \"2do semestre\",\n            \"course\": [\n                { \"name\": \"SISTEMAS OPERATIVOS\" },\n                { \"name\": \"MATEMÁTICA APLICADA\" },\n                { \"name\": \"MODELADO DE SISTEMAS\" },\n                { \"name\": \"PROGRAMACIÓN II\" },\n                { \"name\": \"BASE DE DATOS\" }\n            ]\n        },\n        {\n            \"name\": \"3er semestre\",\n            \"course\": [\n                { \"name\": \"INTERFAZ DE USUARIO\" },\n                { \"name\": \"REDES\" },\n                { \"name\": \"INGENIERÍA DE SOFTWARE\" },\n                { \"name\": \"PROGRAMACIÓN III\" },\n                { \"name\": \"VALIDACIÓN Y VERIFICACIÓN DE PROGRAMAS\" },\n                { \"name\": \"ÉTICA Y DEONTOLOGÍA PROFESIONAL\" }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,7 +39,7 @@
 					"response": []
 				},
 				{
-					"name": "Get careers",
+					"name": "GET careers",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -60,7 +60,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete career",
+					"name": "DELETE career",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -80,6 +80,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "UPDATE career",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCareer\": 12,\n    \"name\": \"Ingenieria en Sistemas modificadooo\",\n    \"description\": \"Dura 3 años\",\n    \"semester\": [\n        {\n            \"name\": \"1er semestre\",\n            \"course\": [\n                { \"name\": \"Matemática de ingenieria\" },\n                { \"name\": \"Algebra\" }\n            ]\n        },\n        {\n            \"name\": \"2do semestre\",\n            \"course\": [\n                { \"name\": \"Matemática II\" },\n                { \"name\": \"Algebra II\" }\n            ]\n        },\n        {\n            \"name\": \"3er semestre\",\n            \"course\": [\n                { \"name\": \"Matemática III\" },\n                { \"name\": \"Algebra III\" }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/careers/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"careers",
+								"save"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -87,7 +117,7 @@
 			"name": "Comments - Zendesk",
 			"item": [
 				{
-					"name": "Get comments",
+					"name": "GET comments",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -109,7 +139,7 @@
 					"response": []
 				},
 				{
-					"name": "Add comment",
+					"name": "CREATE comment",
 					"request": {
 						"method": "PUT",
 						"header": [],
