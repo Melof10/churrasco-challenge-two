@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "b3c83162-2ae0-435b-b5cd-4e09f26b679f",
+		"name": "CHURRASCO-CHALLENGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Career",
+			"item": [
+				{
+					"name": "Added & Update career",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Desarrollo de Software modificado\",\n    \"description\": \"Carrera que tiene una duración de tres añ modificadoo\",\n    \"semester\": [\n        {\n            \"name\": \"1er semestre\",\n            \"course\": [\n                { \"name\": \"MATEMÁTICA Y LÓGICA\" },\n                { \"name\": \"SISTEMAS Y ORGANIZACIONES\" },\n                { \"name\": \"ARQUITECTURA DE LAS COMPUTADORAS\" },\n                { \"name\": \"PROGRAMACIÓN I\" },\n                { \"name\": \"INGLÉS\" }\n            ]\n        },\n        {\n            \"name\": \"2do semestre\",\n            \"course\": [\n                { \"name\": \"SISTEMAS OPERATIVOS\" },\n                { \"name\": \"MATEMÁTICA APLICADA\" },\n                { \"name\": \"MODELADO DE SISTEMAS\" },\n                { \"name\": \"PROGRAMACIÓN II\" },\n                { \"name\": \"BASE DE DATOS\" }\n            ]\n        },\n        {\n            \"name\": \"3er semestre\",\n            \"course\": [\n                { \"name\": \"INTERFAZ DE USUARIO\" },\n                { \"name\": \"REDES\" },\n                { \"name\": \"INGENIERÍA DE SOFTWARE\" },\n                { \"name\": \"PROGRAMACIÓN III\" },\n                { \"name\": \"VALIDACIÓN Y VERIFICACIÓN DE PROGRAMAS\" },\n                { \"name\": \"ÉTICA Y DEONTOLOGÍA PROFESIONAL\" }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/careers/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"careers",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get careers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/careers/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"careers",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete career",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/careers/delete/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"careers",
+								"delete",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments - Zendesk",
+			"item": [
+				{
+					"name": "Get comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/comments/all/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comments",
+								"all",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"prueba de lunes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comments/save/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comments",
+								"save",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
