@@ -1,6 +1,5 @@
 package churrasco.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,32 +13,30 @@ import churrasco.entities.Zendesk;
 
 public class RestClient {
 	
-	@Value("${zendeskUsername}")
-	private String username;
-	@Value("${zendeskPassword}")
-	private String password;
 	private RestTemplate restTemplate = new RestTemplate();
 	private HttpHeaders headers = new HttpHeaders();
 	private Tickets ticketsPath = new Tickets();
 
 	public RestClient() {
-		headers.setBasicAuth(username, password);
+	
 	}
 
-	public ResponseEntity<?> getComments(int idTicket) {
+	public ResponseEntity<?> getComments(int idTicket, String username, String password, String subdomain) {
+		headers.setBasicAuth(username, password);
 		HttpEntity<?> entity = new HttpEntity<>("parameters", headers);
-		ResponseEntity<?> result = restTemplate.exchange(ticketsPath.getComments(idTicket), HttpMethod.GET, entity,	String.class);
+		ResponseEntity<?> result = restTemplate.exchange(ticketsPath.getComments(idTicket, subdomain), HttpMethod.GET, entity,	String.class);
 		return result;
 	}
 	
-	public ResponseEntity<?> createComment(int idTicket, Comment comment){
+	public ResponseEntity<?> createComment(int idTicket, Comment comment, String username, String password, String subdomain){
+		headers.setBasicAuth(username, password);
 		Comment newComment = new Comment(comment.getBody());
 		Ticket ticket = new Ticket(newComment);
 		Zendesk zendesk = new Zendesk(ticket);
 		
 		HttpEntity<Zendesk> requestUpdate = new HttpEntity<>(zendesk, headers);
 		
-		ResponseEntity<?> result = restTemplate.exchange(ticketsPath.createComment(idTicket), HttpMethod.PUT, requestUpdate, String.class);
+		ResponseEntity<?> result = restTemplate.exchange(ticketsPath.createComment(idTicket, subdomain), HttpMethod.PUT, requestUpdate, String.class);
 		return result;
 	}
 	

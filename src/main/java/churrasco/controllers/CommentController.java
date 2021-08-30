@@ -2,6 +2,7 @@ package churrasco.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,33 +19,42 @@ import churrasco.entities.Comment;
 @RequestMapping(value = "/api/comments")
 public class CommentController {
 
+	@Value("${zendeskSubdomain}")
+	private String subdomain;
+	
+	@Value("${zendeskUsername}")
+	private String username;
+	
+	@Value("${zendeskPassword}")
+	private String password;
+	
 	private RestClient restClient = new RestClient();
 
 	@GetMapping(value = "/all/{id}")
 	public ResponseEntity<?> findAll(@PathVariable("id") int idTicket) {
 		try {
-			ResponseEntity<?> result = restClient.getComments(idTicket);
-
+			ResponseEntity<?> result = restClient.getComments(idTicket, username, password, subdomain);
+			
 			if (result != null)
 				return result;
 			else
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@PutMapping(value = "/save/{id}")
 	public ResponseEntity<?> save(@Valid @RequestBody Comment comment, @PathVariable("id") int idTicket) {
 		try {
-			ResponseEntity<?> result = restClient.createComment(idTicket, comment);
-
+			ResponseEntity<?> result = restClient.createComment(idTicket, comment, username, password, subdomain);
+			
 			if (result != null)
 				return result;
 			else
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch(Exception error) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		} catch(Exception e) {
+			return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
