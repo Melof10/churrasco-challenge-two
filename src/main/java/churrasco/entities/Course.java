@@ -16,7 +16,7 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCourse;
 
-	@Column(name = "name", unique = true)
+	@Column(name = "name")
 	private String name;
 
 	public Course(int idCourse, String name) {
